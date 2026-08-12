@@ -1,0 +1,110 @@
+﻿@model List<Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Books</h1>
+
+        <a asp-controller="Book" asp-action="Add" class="btn btn-primary">
+            Add New Book
+        </a>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Book ID</th>
+                    <th>Title</th>
+                    <th> PublicationYear</th>
+                    <th>Description</th>
+                    <th>CoverImage</th>
+                    <th>PdfUrl</th>
+                    <th>Price</th>
+                    <th>CategoryId</th>
+                    <th>AuthorId</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td>@book.BookId</td>
+                        <td>@book.Title</td>
+                        <td>@book.PublicationYear</td>
+                        <td>@book.Description</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(book.CoverImage))
+                            {
+                                <img src="~/images/books/@book.CoverImage"
+                                     alt="@book.Title"
+                                     style="width:80px; height:100px; object-fit:cover;" />
+                            }
+                        </td>
+                        <td>@book.PdfUrl</td>
+                        <td>@book.Price</td>
+                        <td>@book.CategoryId</td>
+                        <td>@book.AuthorId</td>
+                        <td>
+                            <a asp-action="BookDetails"
+                               asp-route-id="@book.BookId"
+                               class="btn btn-info btn-sm">
+                               Details
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@book.BookId"
+                               class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                           <a asp-action="Delete"
+   asp-route-id="@book.BookId"
+   class="btn btn-danger">
+    Delete
+</a>
+                          
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No books found.
+        </div>
+    }
+    <a asp-action="FreeBooks" class="btn btn-success">
+        📚 Free Books
+    </a>
+    <a asp-action="PaidBooks" class="btn btn-primary">
+        💰 Paid Books
+    </a>
+    <div class="mb-5">
+        <form asp-action="Search" method="get">
+            <div class="input-group">
+
+                <input type="text"
+                       name="search"
+                       class="form-control"
+                       placeholder="Search for a book..." />
+
+                <button type="submit" class="btn btn-primary">
+                    🔍 Search
+                </button>
+
+            </div>
+        </form>
+    </div>
+   
+
+
+</div>
