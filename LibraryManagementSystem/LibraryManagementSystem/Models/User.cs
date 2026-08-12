@@ -18,11 +18,12 @@ namespace LibraryManagementSystem.Models
 
             [Required]
             public string Password { get; set; } = string.Empty;
+        [Required]
+        public string Role { get; set; } = "User";
 
 
-           
 
-            public ICollection<Payment> Payments { get; set; }= new List<Payment>();
+        public ICollection<Payment> Payments { get; set; }= new List<Payment>();
 
             public ICollection<Review> Reviews { get; set; }= new List<Review>();
 

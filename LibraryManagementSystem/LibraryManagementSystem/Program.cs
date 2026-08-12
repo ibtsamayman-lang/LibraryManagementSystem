@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using LibraryManagementSystem.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("LibraryDbContext") ?? throw new InvalidOperationException("Connection string 'LibraryDbContext' not found.");
+
+builder.Services.AddDbContext<LibraryDbContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

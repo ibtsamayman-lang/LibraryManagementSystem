@@ -1,0 +1,50 @@
+@* @model List<LibraryManagementSystem.Models.User>
+
+<h2>All Users</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Email:</th>
+            <th>Role:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+@model List<LibraryManagementSystem.Models.User>
+
+<h2>All Users</h2>
+
+<table class="table table-bordered table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                </tr>
+            }
+        }
+       
+    </tbody>
+</table>
