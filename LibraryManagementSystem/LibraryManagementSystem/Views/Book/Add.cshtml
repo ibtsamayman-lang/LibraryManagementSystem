@@ -1,0 +1,99 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Add New Book";
+}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">Add New Book</h2>
+
+    <form asp-action="SaveAdd" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+       
+
+        <div class="mb-3">
+            <label asp-for="PublicationYear" class="form-label"></label>
+            <input asp-for="PublicationYear" class="form-control" />
+            <span asp-validation-for="PublicationYear" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CoverImage" class="form-label"></label>
+            <input asp-for="CoverImage" class="form-control"
+                   placeholder="example.jpg" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PdfUrl" class="form-label"></label>
+            <input asp-for="PdfUrl" class="form-control"
+                   placeholder="example.pdf" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AuthorId" class="form-label">
+                Author
+            </label>
+
+            <select asp-for="AuthorId" class="form-control">
+                <option value="">-- Select Author --</option>
+
+                @foreach (var author in ViewBag.Authors)
+                {
+                    <option value="@author.AuthorId">
+                        @author.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label">
+                Category
+            </label>
+
+            <select asp-for="CategoryId" class="form-control">
+                <option value="">-- Select Category --</option>
+
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryId">
+                        @category.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Add Book
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

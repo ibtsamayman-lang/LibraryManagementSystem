@@ -1,0 +1,100 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+                <div class="row g-0">
+
+                    <!-- Book Cover -->
+                    <div class="col-md-4 bg-light d-flex align-items-center justify-content-center p-4">
+                        @if (!string.IsNullOrEmpty(Model.CoverImage))
+                        {
+                            <img src="~/images/books/@Model.CoverImage"
+                                 class="img-fluid rounded-3 shadow"
+                                 alt="@Model.Title"
+                                 style="max-height: 450px;" />
+                        }
+                        else
+                        {
+                            <div class="text-muted text-center">
+                                <i class="bi bi-book fs-1"></i>
+                                <p>No Cover Available</p>
+                            </div>
+                        }
+                    </div>
+
+                   
+                    <div class="col-md-8">
+                        <div class="card-body p-5">
+
+                            <h1 class="fw-bold mb-3">
+                                @Model.Title
+                            </h1>
+
+                            <p class="text-muted mb-4">
+                                @Model.Description
+                            </p>
+
+
+                            <div class="mb-3">
+                                <strong>Publication Year:</strong>
+                                <span>@Model.PublicationYear</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Author:</strong>
+                                <span>
+                                    @Model.Author?.Name
+                                </span>
+                            </div>
+
+                            <div class="mb-4">
+                                <strong>Category:</strong>
+                                <span class="badge bg-primary">
+                                    @Model.Category?.Name
+                                </span>
+                            </div>
+
+                            <hr />
+
+                            
+                            <div class="d-flex gap-2 mt-4">
+
+                                @if (!string.IsNullOrEmpty(Model.PdfUrl))
+                                {
+                                   <a asp-action="Read"
+                                       asp-route-id="@Model.BookId"
+                                         class="btn btn-success">
+                                          Read
+                                    </a>
+                                }
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@Model.BookId"
+                                   class="btn btn-warning">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Index"
+                                   class="btn btn-secondary">
+                                    Back to Books
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
