@@ -1,0 +1,47 @@
+﻿@using LibraryManagementSystem.ViewModel
+@model AuthorBook
+
+<head>
+<style>
+table, th, td {
+				border: 1px solid #CC3A63;
+  border-collapse: collapse;
+}
+
+th, td {
+				padding: 10px 20px;
+}
+</style>
+</head>
+
+
+<table calss="table border-collapse">
+	<colgroup>
+		<col span="1" style="background-color: #FFF7EB">
+	</colgroup>
+
+		<tr>
+		    <th> Title </th>
+
+			<th> Author name</th>
+
+			<th> Category </th>
+
+			<th> publication Date</th>
+
+		</tr>
+
+
+		<tr>
+			<td> @Model.TitleBook</td>
+
+			<td> @Model.AuthorName</td>
+
+			<td> @Model.CategoryDescription</td>
+
+			<td> @Model.publicationDate</td>
+
+		</tr>
+
+
+</table>
