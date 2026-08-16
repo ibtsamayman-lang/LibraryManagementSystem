@@ -2,67 +2,297 @@
     ViewData["Title"] = "Home";
 }
 
-<!-- Hero Section -->
-<section class="bg-[#f8f7f4] py-xl px-gutter relative overflow-hidden">
-    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-xl relative z-10">
-        <div class="flex-1 space-y-md text-center md:text-left">
-            <h1 class="font-headline-xl text-headline-xl text-primary-container leading-tight">Your Gateway to <br />Infinite Stories</h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto md:mx-0">Discover thousands of e-books, academic journals, and literary classics in our beautifully curated digital collection.</p>
-            <div class="pt-sm">
-                <a asp-controller="Books" asp-action="Index" class="bg-[#d4a017] text-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-secondary-fixed transition-colors shadow-sm inline-flex items-center gap-2">
-                    Browse Collection
-                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </a>
-            </div>
-        </div>
-        <div class="flex-1 relative w-full h-[400px] md:h-[500px]">
-            <div class="absolute inset-0 bg-gradient-to-tr from-primary-container/10 to-transparent rounded-xl transform rotate-3"></div>
-            <img class="w-full h-full object-cover rounded-xl shadow-lg relative z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIix-qaSDp8fRA4BOMQrkhPpqPt0rHW4zL3Ka8T0pjZeHOLGJofSCvZ7Irfm84Q7NCLq8WpQrjjmET8liN6g1fRVGcCMgoVVuiIlIAkHdjiXY2vVBXbdq5TnMoMG1w7hYPwBVnUkARjuf1LHCVJ9sSKC1QsYAIFdYjchaImN_8w4zCt97NU9Gqam_yHXCij6Z0iogNmh7qP04zHR1tYKEBvrVbcmcgytwPcRZFey1mCNTtG-iKpkg0bA" alt="Library" />
-        </div>
-    </div>
-</section>
+<div class="home-page">
 
-<!-- Featured Books Section -->
-<section class="py-xl px-gutter max-w-container-max mx-auto">
-    <div class="flex justify-between items-end mb-lg border-b border-outline-variant pb-sm">
-        <div>
-            <h2 class="font-headline-lg text-headline-lg text-primary">Featured &amp; Bestselling</h2>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Curated selections from our expert librarians</p>
+    <!-- Welcome Section -->
+    <div class="text-center welcome-section">
+
+        <div class="library-icon">
+            📚
         </div>
-        <a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" asp-controller="Books" asp-action="Index">
-            View All <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-        </a>
+
+        <h1>Welcome to Library Management</h1>
+
+        <p>
+            Manage books, categories, users, reviews and reading records
+            easily in one place.
+        </p>
+
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-md">
-        <!-- Book Card 1 -->
-        <div class="bg-surface-lowest rounded-lg overflow-hidden border border-surface-variant relative book-card-hover flex flex-col group cursor-pointer">
-            <div class="aspect-[2/3] w-full relative overflow-hidden bg-surface-container-low">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOKZ9-hdZ2nk0dcFha7UnUw9jXaSUwg8qjs0LYmnP8hx-elyrFcGJ26fORxuNZmNQynz5RFtiwJafnbtoLlDLzOc8EMw2Czhdc_hVTnr06kf3nK67rXWNlOgb6ebzlTxITnDTMDXhKYeqzEm1YRykuiEDTT3IJfgWnw_YPdfS_xD0rlTnxSbwkHcsrZvGOpZh3duoY377l7QaOWK8eSJIUyDbQJATrnBRwBqG4SVukJZ5Y6cPNASpX6g" />
-            </div>
-            <div class="p-sm flex flex-col flex-grow">
-                <h3 class="font-headline-sm text-headline-sm text-primary line-clamp-1 mb-xs">The Silent Architecture</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">E. R. Vance</p>
-                <div class="mt-auto flex justify-between items-center pt-sm border-t border-surface-variant">
-                    <span class="font-label-md text-label-md text-primary">$12.99</span>
-                    <span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-1 rounded-full">Available</span>
+
+    <!-- Dashboard Cards -->
+
+    <div class="row g-4 mt-4">
+
+
+        <!-- Books -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Book"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+                    <h3>Books</h3>
+
+                    <p>
+                        View and manage all books in the library.
+                    </p>
+
+                    <span>
+                        View Books →
+                    </span>
+
                 </div>
-            </div>
+
+            </a>
+
         </div>
 
-        <!-- Book Card 2 -->
-        <div class="bg-surface-lowest rounded-lg overflow-hidden border border-surface-variant relative book-card-hover flex flex-col group cursor-pointer">
-            <div class="aspect-[2/3] w-full relative overflow-hidden bg-surface-container-low">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHU5phDoewTOC3Fy-Lebj9u7IznWJcHxwBUb9Q8QdEExYbqr6BJ34Aor8sbWgAjssTQEb6CEqrBiKXqKi1_cA815QMB16yZN7UFXs6qnsdE0Ok7llvYNyqIDh_GQKdEZiRK0d_lJ4AbdboVvVx2OmeZoE1XLEOYa1A5SmJQtQxRTgP8XKfZYRrjlfCZZonNK1D6yrRRJyozJ5XmtoS90MLUsLxbRVEpptl6Dac6UA_1gy_hliZvZ8dqQ" />
-            </div>
-            <div class="p-sm flex flex-col flex-grow">
-                <h3 class="font-headline-sm text-headline-sm text-primary line-clamp-1 mb-xs">Echoes of Antiquity</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Dr. Sarah Jenkins</p>
-                <div class="mt-auto flex justify-between items-center pt-sm border-t border-surface-variant">
-                    <span class="font-label-md text-label-md text-primary">$15.50</span>
-                    <span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full">Waitlist</span>
+
+        <!-- Categories -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Categories"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        🏷️
+                    </div>
+
+                    <h3>Categories</h3>
+
+                    <p>
+                        Organize books by their categories.
+                    </p>
+
+                    <span>
+                        View Categories →
+                    </span>
+
                 </div>
-            </div>
+
+            </a>
+
         </div>
+
+
+        <!-- Users -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Users"
+               asp-action="GetAll"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <h3>Users</h3>
+
+                    <p>
+                        Manage library users and their information.
+                    </p>
+
+                    <span>
+                        View Users →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Reviews -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Review"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        ⭐
+                    </div>
+
+                    <h3>Reviews</h3>
+
+                    <p>
+                        View ratings and reviews for books.
+                    </p>
+
+                    <span>
+                        View Reviews →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Reading -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Read"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📖
+                    </div>
+
+                    <h3>Reading</h3>
+
+                    <p>
+                        Track books that users are reading.
+                    </p>
+
+                    <span>
+                        View Reading →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Library -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Book"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        🏛️
+                    </div>
+
+                    <h3>Library</h3>
+
+                    <p>
+                        Explore the complete library collection.
+                    </p>
+
+                    <span>
+                        Explore Library →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
     </div>
-</section>
+
+</div>
+
+
+<style>
+
+    .home-page {
+        padding: 20px 0 50px;
+    }
+
+
+    /* Welcome */
+
+    .welcome-section {
+        padding: 35px 20px;
+    }
+
+
+    .library-icon {
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+
+
+    .welcome-section h1 {
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #212529;
+    }
+
+
+    .welcome-section p {
+        font-size: 18px;
+        color: #6c757d;
+        max-width: 700px;
+        margin: auto;
+    }
+
+
+    /* Cards */
+
+    .dashboard-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        min-height: 240px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.25s ease;
+        border: 1px solid #eee;
+    }
+
+
+        .dashboard-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+
+    .card-icon {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+
+    .dashboard-card h3 {
+        color: #212529;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+
+    .dashboard-card p {
+        color: #6c757d;
+        min-height: 50px;
+    }
+
+
+    .dashboard-card span {
+        color: #0d6efd;
+        font-weight: 600;
+    }
+
+</style>

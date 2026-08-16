@@ -201,14 +201,26 @@ namespace LibraryManagementSystem.Controllers
             return View(users); 
         }
 
-        
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var user = await _context.Users
+        //        .FirstOrDefaultAsync(u => u.UserId == id);
+
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(user);
+        //}
+        public async Task<IActionResult> Details(int id)
+        {
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.UserId == id);
 
@@ -220,7 +232,6 @@ namespace LibraryManagementSystem.Controllers
             return View(user);
         }
 
-        
         public IActionResult Create()
         {
             return View();
