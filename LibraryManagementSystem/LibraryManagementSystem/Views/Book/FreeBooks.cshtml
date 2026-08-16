@@ -1,0 +1,77 @@
+﻿@model List<Book>
+
+@{
+    ViewData["Title"] = "Free Books";
+}
+
+<div class="container py-5">
+
+    <h2 class="text-center mb-4">📚 Free Books</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No free books available.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            @foreach (var book in Model)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        @if (!string.IsNullOrEmpty(book.CoverImage))
+                        {
+                            <img src="~/images/books/@book.CoverImage"
+                                 class="card-img-top"
+                                 alt="@book.Title"
+                                 style="height:300px; object-fit:cover;" />
+                        }
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                @book.Title
+                            </h5>
+
+                            <p>
+                                <strong>Author:</strong>
+                                @book.Author?.Name
+                            </p>
+
+                            <p>
+                                <strong>Category:</strong>
+                                @book.Category?.Name
+                            </p>
+
+                            <p class="text-success fw-bold">
+                                FREE
+                            </p>
+
+                            <a asp-action="BookDetails"
+                               asp-route-id="@book.BookId"
+                               class="btn btn-primary">
+                                Details
+                            </a>
+
+                            <a asp-action="Read"
+                               asp-route-id="@book.BookId"
+                               class="btn btn-success">
+                                Read Book
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
