@@ -1,0 +1,73 @@
+﻿@* @model List<LibraryManagementSystem.Models.Category>
+
+<h2>All Categories</h2>
+
+<a asp-action="Create">+ Add New Category</a>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@category.CategoryId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@category.CategoryId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@category.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+@@model IEnumerable<LibraryManagementSystem.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="py-6">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+        <div>
+            <h1 class="text-2xl font-bold text-[#162839]">All Categories</h1>
+            <p class="text-sm text-gray-500 mt-1">Browse categories in the library system</p>
+        </div>
+        <a asp-action="Create" class="bg-[#d4a017] hover:bg-[#b88a13] text-[#162839] font-semibold text-sm px-4 py-2 rounded-lg transition-colors flex items-center gap-1 shadow-sm">
+            <span class="material-symbols-outlined text-lg">add</span>
+            Add New Category
+        </a>
+    </div>
+
+    <!-- Categories Table -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-[#f4f3f0] border-b border-gray-200 text-xs uppercase font-semibold text-[#162839]">
+                    <th class="py-3 px-6">Name</th>
+                    <th class="py-3 px-6">Description</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-sm text-gray-700">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-gray-50/50 transition-colors">
+                        <td class="py-4 px-6 font-semibold text-[#162839] whitespace-nowrap">
+                            @item.Name
+                        </td>
+                        <td class="py-4 px-6 text-gray-600">
+                            @item.Description
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

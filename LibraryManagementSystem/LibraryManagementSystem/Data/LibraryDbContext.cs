@@ -1,6 +1,9 @@
-<<<<<<< Updated upstream
+ ibtsam-user-category
+
+ Updated upstream
 ﻿using Microsoft.EntityFrameworkCore;
-=======
+
+ main
 ﻿//using Microsoft.EntityFrameworkCore;
 //using LibraryManagementSystem.Models;
 
@@ -45,26 +48,31 @@
 //    }
 //}
 using Microsoft.EntityFrameworkCore;
->>>>>>> Stashed changes
+ ibtsam-user-category
+
+ Stashed changes
+ main
 using LibraryManagementSystem.Models;
 
 namespace LibraryManagementSystem.Data
 {
     public class LibraryDbContext : DbContext
-<<<<<<< Updated upstream
-=======
+ ibtsam-user-category
+
+ Updated upstream
+
     {
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
         }
->>>>>>> Stashed changes
+ Stashed changes
 
+ main
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(
-     "Server=.;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=True");
         }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Book> Books { get; set; }

@@ -1,14 +1,22 @@
-<<<<<<< Updated upstream
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-=======
+ ibtsam-user-category
 using LibraryManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
->>>>>>> Stashed changes
+
+ Updated upstream
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+using LibraryManagementSystem.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+ Stashed changes
+ main
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<LibraryDbContext>(options =>
