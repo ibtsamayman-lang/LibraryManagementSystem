@@ -8,13 +8,7 @@ namespace LibraryManagementSystem.Controllers
 
     public class BookController : Controller
     {
-        private readonly LibraryDbContext _dbContext;
-
-        public BookController(LibraryDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
+        LibraryDbContext _dbContext = new();
         public IActionResult Index()
         {
             var Books = _dbContext.Books.ToList();

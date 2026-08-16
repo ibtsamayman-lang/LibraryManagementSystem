@@ -63,7 +63,7 @@ namespace LibraryManagementSystem.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-     "Server=DESKTOP-PAS6CKN;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=True");
+     "Server=.;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=True");
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
