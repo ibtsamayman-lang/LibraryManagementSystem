@@ -63,6 +63,8 @@ namespace LibraryManagementSystem.Controllers
             {
                 _context.Categories.Add(category);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Category added successfully!";
+                return RedirectToAction(nameof(Index));
                 return RedirectToAction(nameof(Index));
             }
 
@@ -101,6 +103,8 @@ namespace LibraryManagementSystem.Controllers
                 {
                     _context.Update(category);
                     await _context.SaveChangesAsync();
+                    TempData["Success"] = "Category updated successfully!";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -146,6 +150,8 @@ namespace LibraryManagementSystem.Controllers
             {
                 _context.Categories.Remove(category);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Category deleted successfully!";
+                return RedirectToAction(nameof(Index));
             }
 
             return RedirectToAction(nameof(Index));

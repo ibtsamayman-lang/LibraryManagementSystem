@@ -156,8 +156,45 @@ namespace LibraryManagementSystem.Controllers
         {
             _context = context;
         }
+        // 1. عرض صفحة تسجيل الدخول (GET)
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
 
-        
+        // 2. عرض صفحة إنشاء حساب جديد (GET)
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // 3. عرض لوحة التحكم الخاصة بالمستخدم (GET)
+        [HttpGet]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            // تحقق من بيانات المستخدم
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        public IActionResult Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                // حفظ المستخدم الجديد في قاعدة البيانات عبر DbContext
+                return RedirectToAction("Login");
+            }
+            return View(user);
+        }
+
         public async Task<IActionResult> GetAll()
         {
             var users = await _context.Users.ToListAsync();
@@ -279,6 +316,18 @@ namespace LibraryManagementSystem.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(GetAll));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult User(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges(); // حفظ البيانات في SQL Server
+                return RedirectToAction("Login");
+            }
+            return View(user);
         }
     }
 }

@@ -1,8 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section class="bg-[#f8f7f4] py-xl px-gutter relative overflow-hidden">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-xl relative z-10">
+        <div class="flex-1 space-y-md text-center md:text-left">
+            <h1 class="font-headline-xl text-headline-xl text-primary-container leading-tight">Your Gateway to <br />Infinite Stories</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto md:mx-0">Discover thousands of e-books, academic journals, and literary classics in our beautifully curated digital collection.</p>
+            <div class="pt-sm">
+                <a asp-controller="Books" asp-action="Index" class="bg-[#d4a017] text-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-secondary-fixed transition-colors shadow-sm inline-flex items-center gap-2">
+                    Browse Collection
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 relative w-full h-[400px] md:h-[500px]">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-container/10 to-transparent rounded-xl transform rotate-3"></div>
+            <img class="w-full h-full object-cover rounded-xl shadow-lg relative z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIix-qaSDp8fRA4BOMQrkhPpqPt0rHW4zL3Ka8T0pjZeHOLGJofSCvZ7Irfm84Q7NCLq8WpQrjjmET8liN6g1fRVGcCMgoVVuiIlIAkHdjiXY2vVBXbdq5TnMoMG1w7hYPwBVnUkARjuf1LHCVJ9sSKC1QsYAIFdYjchaImN_8w4zCt97NU9Gqam_yHXCij6Z0iogNmh7qP04zHR1tYKEBvrVbcmcgytwPcRZFey1mCNTtG-iKpkg0bA" alt="Library" />
+        </div>
+    </div>
+</section>
+
+<!-- Featured Books Section -->
+<section class="py-xl px-gutter max-w-container-max mx-auto">
+    <div class="flex justify-between items-end mb-lg border-b border-outline-variant pb-sm">
+        <div>
+            <h2 class="font-headline-lg text-headline-lg text-primary">Featured &amp; Bestselling</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Curated selections from our expert librarians</p>
+        </div>
+        <a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" asp-controller="Books" asp-action="Index">
+            View All <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+        </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-md">
+        <!-- Book Card 1 -->
+        <div class="bg-surface-lowest rounded-lg overflow-hidden border border-surface-variant relative book-card-hover flex flex-col group cursor-pointer">
+            <div class="aspect-[2/3] w-full relative overflow-hidden bg-surface-container-low">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOKZ9-hdZ2nk0dcFha7UnUw9jXaSUwg8qjs0LYmnP8hx-elyrFcGJ26fORxuNZmNQynz5RFtiwJafnbtoLlDLzOc8EMw2Czhdc_hVTnr06kf3nK67rXWNlOgb6ebzlTxITnDTMDXhKYeqzEm1YRykuiEDTT3IJfgWnw_YPdfS_xD0rlTnxSbwkHcsrZvGOpZh3duoY377l7QaOWK8eSJIUyDbQJATrnBRwBqG4SVukJZ5Y6cPNASpX6g" />
+            </div>
+            <div class="p-sm flex flex-col flex-grow">
+                <h3 class="font-headline-sm text-headline-sm text-primary line-clamp-1 mb-xs">The Silent Architecture</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">E. R. Vance</p>
+                <div class="mt-auto flex justify-between items-center pt-sm border-t border-surface-variant">
+                    <span class="font-label-md text-label-md text-primary">$12.99</span>
+                    <span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-1 rounded-full">Available</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Card 2 -->
+        <div class="bg-surface-lowest rounded-lg overflow-hidden border border-surface-variant relative book-card-hover flex flex-col group cursor-pointer">
+            <div class="aspect-[2/3] w-full relative overflow-hidden bg-surface-container-low">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHU5phDoewTOC3Fy-Lebj9u7IznWJcHxwBUb9Q8QdEExYbqr6BJ34Aor8sbWgAjssTQEb6CEqrBiKXqKi1_cA815QMB16yZN7UFXs6qnsdE0Ok7llvYNyqIDh_GQKdEZiRK0d_lJ4AbdboVvVx2OmeZoE1XLEOYa1A5SmJQtQxRTgP8XKfZYRrjlfCZZonNK1D6yrRRJyozJ5XmtoS90MLUsLxbRVEpptl6Dac6UA_1gy_hliZvZ8dqQ" />
+            </div>
+            <div class="p-sm flex flex-col flex-grow">
+                <h3 class="font-headline-sm text-headline-sm text-primary line-clamp-1 mb-xs">Echoes of Antiquity</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Dr. Sarah Jenkins</p>
+                <div class="mt-auto flex justify-between items-center pt-sm border-t border-surface-variant">
+                    <span class="font-label-md text-label-md text-primary">$15.50</span>
+                    <span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-full">Waitlist</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
