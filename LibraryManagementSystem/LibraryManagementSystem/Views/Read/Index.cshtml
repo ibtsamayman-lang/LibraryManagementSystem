@@ -1,0 +1,41 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Read>
+
+@{
+    ViewData["Title"] = "Reads";
+}
+
+<h1>Reads</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Read ID</th>
+            <th>User</th>
+            <th>Book</th>
+            <th>Read Date</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReadId</td>
+                <td>@item.User.Name</td>
+                <td>@item.Book.Title</td>
+                <td>@item.ReadDate</td>
+                <td>@item.Status</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ReadId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ReadId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ReadId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
