@@ -1,0 +1,34 @@
+﻿@model Author
+<head>
+<style>
+table, th, td {
+				border: 1px solid #CC3A63;
+  border-collapse: collapse;
+}
+th, td {
+				padding: 10px 20px;
+}
+</style>
+</head>
+
+
+<table calss="table">
+	<colgroup>
+		<col span="1" style="background-color: #FFF7EB">
+	</colgroup>
+
+		<tr>
+
+			<th> Author name</th>
+			<th> Email </th>
+
+		</tr>
+
+
+		<tr>
+			<td> @Model.Name</td>
+			<td> @Model.Email</td>
+		</tr>
+
+
+</table>
