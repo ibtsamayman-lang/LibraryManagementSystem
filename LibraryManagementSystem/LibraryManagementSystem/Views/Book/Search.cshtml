@@ -1,0 +1,83 @@
+﻿@model List< Book>
+
+@{
+    ViewData["Title"] = "Search Books";
+}
+
+<div class="container py-5">
+
+    <h2 class="text-center mb-4">Search Books</h2>
+
+    <form asp-action="Search" method="get" class="mb-5">
+        <div class="input-group">
+
+            <input type="text"
+                   name="search"
+                   class="form-control"
+                   placeholder="Search by title,  or author..."
+                   value="@Context.Request.Query["search"]" />
+
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+        </div>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            No books found.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            @foreach (var book in Model)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        @if (!string.IsNullOrEmpty(book.CoverImage))
+                        {
+                            <img src="~/images/books/@book.CoverImage"
+                                 class="card-img-top"
+                                 alt="@book.Title"
+                                 style="height:300px; object-fit:cover;" />
+                        }
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                @book.Title
+                            </h5>
+
+                            <p class="card-text">
+                                Author:
+                                @book.Author?.Name
+                            </p>
+
+                            <p class="card-text">
+                                Category:
+                                @book.Category?.Name
+                            </p>
+
+                            <a asp-action="BookDetails"
+                               asp-route-id="@book.BookId"
+                               class="btn btn-primary">
+                                Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
