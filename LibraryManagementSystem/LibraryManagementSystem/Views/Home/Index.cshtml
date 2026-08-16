@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home";
 }
 
+ ibtsam-user-category
 <div class="home-page">
 
     <!-- Welcome Section -->
@@ -215,6 +216,226 @@
 
 </div>
 
+ Updated upstream
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="home-page">
+
+    <!-- Welcome Section -->
+    <div class="text-center welcome-section">
+
+        <div class="library-icon">
+            📚
+        </div>
+
+        <h1>Welcome to Library Management</h1>
+
+        <p>
+            Manage books, categories, users, reviews and reading records
+            easily in one place.
+        </p>
+
+    </div>
+
+
+    <!-- Dashboard Cards -->
+
+    <div class="row g-4 mt-4">
+
+
+        <!-- Books -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Book"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+                    <h3>Books</h3>
+
+                    <p>
+                        View and manage all books in the library.
+                    </p>
+
+                    <span>
+                        View Books →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Categories -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Categories"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        🏷️
+                    </div>
+
+                    <h3>Categories</h3>
+
+                    <p>
+                        Organize books by their categories.
+                    </p>
+
+                    <span>
+                        View Categories →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Users -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Users"
+               asp-action="GetAll"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <h3>Users</h3>
+
+                    <p>
+                        Manage library users and their information.
+                    </p>
+
+                    <span>
+                        View Users →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Reviews -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Review"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        ⭐
+                    </div>
+
+                    <h3>Reviews</h3>
+
+                    <p>
+                        View ratings and reviews for books.
+                    </p>
+
+                    <span>
+                        View Reviews →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Reading -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Read"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📖
+                    </div>
+
+                    <h3>Reading</h3>
+
+                    <p>
+                        Track books that users are reading.
+                    </p>
+
+                    <span>
+                        View Reading →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- Library -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <a asp-controller="Book"
+               asp-action="Index"
+               class="text-decoration-none">
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        🏛️
+                    </div>
+
+                    <h3>Library</h3>
+
+                    <p>
+                        Explore the complete library collection.
+                    </p>
+
+                    <span>
+                        Explore Library →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+ main
+
 
 <style>
 
@@ -295,4 +516,9 @@
         font-weight: 600;
     }
 
+ ibtsam-user-category
 </style>
+
+</style>
+ Stashed changes
+ main

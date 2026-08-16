@@ -1,3 +1,9 @@
+ ibtsam-user-category
+
+ Updated upstream
+﻿using Microsoft.EntityFrameworkCore;
+
+ main
 ﻿//using Microsoft.EntityFrameworkCore;
 //using LibraryManagementSystem.Models;
 
@@ -42,11 +48,26 @@
 //    }
 //}
 using Microsoft.EntityFrameworkCore;
+ ibtsam-user-category
+
+ Stashed changes
+ main
 using LibraryManagementSystem.Models;
 
 namespace LibraryManagementSystem.Data
 {
     public class LibraryDbContext : DbContext
+ ibtsam-user-category
+
+ Updated upstream
+
+    {
+        public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
+        {
+        }
+ Stashed changes
+
+ main
     {
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
