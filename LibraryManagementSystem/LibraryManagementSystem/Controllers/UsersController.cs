@@ -156,44 +156,7 @@ namespace LibraryManagementSystem.Controllers
         {
             _context = context;
         }
-        // 1. عرض صفحة تسجيل الدخول (GET)
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        // 2. عرض صفحة إنشاء حساب جديد (GET)
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        // 3. عرض لوحة التحكم الخاصة بالمستخدم (GET)
-        [HttpGet]
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Login(string username, string password)
-        {
-            // تحقق من بيانات المستخدم
-            return RedirectToAction("Dashboard");
-        }
-
-        [HttpPost]
-        public IActionResult Register(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                // حفظ المستخدم الجديد في قاعدة البيانات عبر DbContext
-                return RedirectToAction("Login");
-            }
-            return View(user);
-        }
+        
 
         public async Task<IActionResult> GetAll()
         {

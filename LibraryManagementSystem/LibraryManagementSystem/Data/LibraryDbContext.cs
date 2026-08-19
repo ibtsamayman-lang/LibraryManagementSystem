@@ -1,3 +1,8 @@
+
+
+using LibraryManagementSystem.Models;
+
+=======
 // ibtsam-user-category
 
 // Updated upstream
@@ -82,10 +87,11 @@
 //        public DbSet<Read> Reads { get; set; }
 //    }
 //}
-//<<<<<<< Updated upstream
+
 using LibraryManagementSystem.Models;
 
-//=======
+ main
+
 //using Microsoft.EntityFrameworkCore;
 //using LibraryManagementSystem.Models;
 
@@ -131,13 +137,13 @@ using LibraryManagementSystem.Models;
 //}
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-//>>>>>>> Stashed changes
+
 //using LibraryManagementSystem.Models;
 
 namespace LibraryManagementSystem.Data
 {
     public class LibraryDbContext : DbContext
-    //=======
+ 
     {
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
@@ -147,7 +153,6 @@ namespace LibraryManagementSystem.Data
         {
         }
 
-        //>>>>>>> Stashed changes
 
         //  {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

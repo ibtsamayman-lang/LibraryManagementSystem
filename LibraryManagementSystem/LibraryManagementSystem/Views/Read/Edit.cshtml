@@ -6,35 +6,69 @@
 
 <h1>Edit Read</h1>
 
-<form asp-action="Edit" method="post">
+<form asp-controller="Read" asp-action="Edit" method="post">
+
+    @Html.AntiForgeryToken()
+
     <input type="hidden" asp-for="ReadId" />
 
-    <div class="form-group">
-        <label asp-for="UserId" class="control-label"></label>
-        <input asp-for="UserId" class="form-control" />
+    <div class="form-group mb-3">
+        <label asp-for="UserId" class="control-label">User</label>
+
+        <select asp-for="UserId" class="form-control">
+            <option value="">-- Select User --</option>
+
+            @foreach (var user in ViewBag.Users)
+            {
+                <option value="@user.UserId">
+                    @user.Name
+                </option>
+            }
+        </select>
+
         <span asp-validation-for="UserId" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="BookId" class="control-label"></label>
-        <input asp-for="BookId" class="form-control" />
+    <div class="form-group mb-3">
+        <label asp-for="BookId" class="control-label">Book</label>
+
+        <select asp-for="BookId" class="form-control">
+            <option value="">-- Select Book --</option>
+
+            @foreach (var book in ViewBag.Books)
+            {
+                <option value="@book.BookId">
+                    @book.Title
+                </option>
+            }
+        </select>
+
         <span asp-validation-for="BookId" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Status" class="control-label"></label>
-        <input asp-for="Status" class="form-control" />
+    <div class="form-group mb-3">
+        <label asp-for="Status" class="control-label">Status</label>
+
+        <select asp-for="Status" class="form-control">
+            <option value="Reading">Reading</option>
+            <option value="Completed">Completed</option>
+        </select>
+
         <span asp-validation-for="Status" class="text-danger"></span>
     </div>
 
-    <br />
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
+    <a asp-controller="Read"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
 </form>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }

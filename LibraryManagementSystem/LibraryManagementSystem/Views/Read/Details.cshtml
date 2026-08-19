@@ -8,14 +8,11 @@
 
 <div>
     <dl class="row">
-        <dt class="col-sm-2">Read ID</dt>
-        <dd class="col-sm-10">@Model.ReadId</dd>
-
         <dt class="col-sm-2">User</dt>
-        <dd class="col-sm-10">@Model.User.Name</dd>
+        <dd class="col-sm-10">@Model.User?.Name</dd>
 
         <dt class="col-sm-2">Book</dt>
-        <dd class="col-sm-10">@Model.Book.Title</dd>
+        <dd class="col-sm-10">@Model.Book?.Title</dd>
 
         <dt class="col-sm-2">Read Date</dt>
         <dd class="col-sm-10">@Model.ReadDate</dd>
@@ -25,7 +22,15 @@
     </dl>
 </div>
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ReadId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<a asp-controller="Read"
+   asp-action="Edit"
+   asp-route-id="@Model.ReadId"
+   class="btn btn-warning">
+    Edit
+</a>
+
+<a asp-controller="Read"
+   asp-action="Index"
+   class="btn btn-secondary">
+    Back
+</a>
