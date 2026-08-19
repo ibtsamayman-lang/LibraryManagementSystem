@@ -10,14 +10,11 @@
 
 <div>
     <dl class="row">
-        <dt class="col-sm-2">Read ID</dt>
-        <dd class="col-sm-10">@Model.ReadId</dd>
-
         <dt class="col-sm-2">User</dt>
-        <dd class="col-sm-10">@Model.User.Name</dd>
+        <dd class="col-sm-10">@Model.User?.Name</dd>
 
         <dt class="col-sm-2">Book</dt>
-        <dd class="col-sm-10">@Model.Book.Title</dd>
+        <dd class="col-sm-10">@Model.Book?.Title</dd>
 
         <dt class="col-sm-2">Read Date</dt>
         <dd class="col-sm-10">@Model.ReadDate</dd>
@@ -26,9 +23,21 @@
         <dd class="col-sm-10">@Model.Status</dd>
     </dl>
 
-    <form asp-action="Delete" method="post">
+    <form asp-controller="Read" asp-action="Delete" method="post">
+
+        @Html.AntiForgeryToken()
+
         <input type="hidden" asp-for="ReadId" />
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+        <button type="submit" class="btn btn-danger">
+            Delete
+        </button>
+
+        <a asp-controller="Read"
+           asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
     </form>
 </div>
