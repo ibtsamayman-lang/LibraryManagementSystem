@@ -141,11 +141,11 @@
 //        }
 //    }
 //}
-using LibraryManagementSystem.Data;
-using LibraryManagementSystem.Models;
-using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc;
+using LibraryManagementSystem.Models;
+using LibraryManagementSystem.Data; 
 namespace LibraryManagementSystem.Controllers
 {
     public class UsersController : Controller
@@ -234,7 +234,26 @@ namespace LibraryManagementSystem.Controllers
             return View(user);
         }
 
-        
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, User user)
+        //{
+        //    if (id != user.UserId)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Update(user);
+        //        await _context.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof(GetAll));
+        //    }
+
+        //    return View(user);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, User user)
@@ -244,18 +263,33 @@ namespace LibraryManagementSystem.Controllers
                 return NotFound();
             }
 
+            // إزالة الحقول التي تمنع الحفظ
+            ModelState.Remove("Password");
+            ModelState.Remove("Books");
+            ModelState.Remove("Reads");
+            ModelState.Remove("Reviews");
+
             if (ModelState.IsValid)
             {
-                _context.Update(user);
-                await _context.SaveChangesAsync();
+                var existingUser = await _context.Users.FindAsync(id);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
 
+                // تحديث البيانات مباشرة
+                existingUser.Name = user.Name;
+                existingUser.Email = user.Email;
+                existingUser.Role = user.Role;
+
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(GetAll));
             }
 
             return View(user);
         }
 
-       
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

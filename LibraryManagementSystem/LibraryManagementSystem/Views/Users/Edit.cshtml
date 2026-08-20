@@ -1,4 +1,4 @@
-@model LibraryManagementSystem.Models.User
+@* @model LibraryManagementSystem.Models.User
 
 <h2>Edit User Details</h2>
 
@@ -34,4 +34,51 @@
     <button type="submit">Save Changes</button>
 </form>
 
-<a asp-action="GetAll">Back to List</a>
+<a asp-action="GetAll">Back to List</a> *@
+@model LibraryManagementSystem.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="container py-4">
+    <h2>Edit User</h2>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type="hidden" asp-for="UserId" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Role" class="form-label"></label>
+                    <input asp-for="Role" class="form-control" />
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a asp-action="GetAll" class="btn btn-secondary">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
