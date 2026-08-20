@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -71,7 +72,8 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                    <ul class="navbar-nav ms-auto">
+                    <!-- الروابط الرئيسية -->
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -93,6 +95,30 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Read" asp-action="Index">Reading</a>
                         </li>
+                    </ul>
+
+                    <!-- روابط الحساب وحالة تسجيل الدخول -->
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        @if (Context.Session.GetInt32("UserId") != null)
+                        {
+                            <li class="nav-item me-2">
+                                <a class="nav-link text-primary fw-bold" asp-controller="Users" asp-action="Dashboard">
+                                    👤 @Context.Session.GetString("UserName")
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm" asp-controller="Users" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item me-2">
+                                <a class="nav-link" asp-controller="Users" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm text-white" asp-controller="Users" asp-action="Register">Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
