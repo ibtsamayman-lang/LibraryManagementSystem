@@ -69,12 +69,18 @@
    class="btn btn-danger">
     Delete
 </a>
+
+    <a asp-controller="Payments"
+   asp-action="Create"
+   asp-route-bookId="@book.BookId"
+   class="btn btn-success">
+    💳 Pay
+</a>
                           
                         </td>
                     </tr>
                 }
             </tbody>
-
         </table>
     }
     else
