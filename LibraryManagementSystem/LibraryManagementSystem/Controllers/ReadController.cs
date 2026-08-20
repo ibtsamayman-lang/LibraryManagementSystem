@@ -116,7 +116,9 @@
 using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LibraryManagementSystem.Controllers
 {
@@ -160,30 +162,10 @@ namespace LibraryManagementSystem.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(Read read)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        read.ReadDate = DateTime.Now;
-
-        //        _context.Reads.Add(read);
-        //        await _context.SaveChangesAsync();
-
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    ViewBag.Users = await _context.Users.ToListAsync();
-        //    ViewBag.Books = await _context.Books.ToListAsync();
-
-        //    return View(read);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Read read)
         {
-            // نشيل الـ Navigation Properties من الـ Validation زي ما عملنا في Review
             ModelState.Remove("User");
             ModelState.Remove("Book");
 
@@ -203,35 +185,31 @@ namespace LibraryManagementSystem.Controllers
             return View(read);
         }
 
-        public async Task<IActionResult> Edit(int id)
+      
+public async Task<IActionResult> Edit(int? id)
+    {
+        if (id == null)
         {
-            var read = await _context.Reads.FindAsync(id);
-
-            if (read == null)
-                return NotFound();
-
-            return View(read);
+            return NotFound();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Read read)
+        var read = await _context.Reads.FindAsync(id);
+        if (read == null)
         {
-            if (id != read.ReadId)
-                return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                _context.Reads.Update(read);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(read);
+            return NotFound();
         }
 
-        public async Task<IActionResult> Delete(int id)
+        // جلب البيانات وتمرير اسم الـ Primary Key واسم العمود المعروض
+        var usersList = await _context.Users.ToListAsync();
+        var booksList = await _context.Books.ToListAsync();
+
+        ViewBag.UsersList = new SelectList(usersList, "UserId", "Name", read.UserId);
+        ViewBag.BooksList = new SelectList(booksList, "BookId", "Title", read.BookId);
+
+        return View(read);
+    }
+
+    public async Task<IActionResult> Delete(int id)
         {
             var read = await _context.Reads
                 .Include(r => r.User)
