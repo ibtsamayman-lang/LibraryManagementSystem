@@ -1,0 +1,246 @@
+﻿@{
+    ViewData["Title"] = "Book Payment";
+    var book = ViewBag.Book as LibraryManagementSystem.Models.Book;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h3>Book Payment</h3>
+                </div>
+
+                <div class="card-body">
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <strong>Book ID:</strong> @book.BookId
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Book Title:</strong> @book.Title
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Amount:</strong> @book.Price
+                    </div>
+
+                    <hr />
+
+                    <form asp-action="Create" method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="bookId"
+                               value="@book.BookId" />
+
+                        <div class="mb-3">
+                            <label class="form-label">User ID</label>
+                            <input type="number"
+                                   name="userId"
+                                   class="form-control"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Visa Card Number</label>
+                            <input type="text"
+                                   name="cardNumber"
+                                   class="form-control"
+                                   placeholder="16 digit test card"
+                                   maxlength="16"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Card Holder Name</label>
+                            <input type="text"
+                                   name="cardHolder"
+                                   class="form-control"
+                                   required />
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Expiry Date</label>
+                                <input type="text"
+                                       name="expiryDate"
+                                       class="form-control"
+                                       placeholder="MM/YY"
+                                       required />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">CVV</label>
+                                <input type="text"
+                                       name="cvv"
+                                       class="form-control"
+                                       placeholder="123"
+                                       maxlength="3"
+                                       required />
+                            </div>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+                            Pay Now
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@* @{
+    ViewData["Title"] = "Book Payment";
+
+    var book = ViewBag.Book as LibraryManagementSystem.Models.Book;
+    var users = ViewBag.Users as List<LibraryManagementSystem.Models.User>;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header text-center">
+                    <h3>Book Payment</h3>
+                </div>
+
+                <div class="card-body">
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <strong>Book ID:</strong>
+                        @book.BookId
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Book Title:</strong>
+                        @book.Title
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Price:</strong>
+                        @book.Price
+                    </div>
+
+                    <hr />
+
+                    <form asp-action="Create"
+                          asp-route-bookId="@book.BookId"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label class="form-label">User</label>
+
+                            <select name="userId"
+                                    class="form-control"
+                                    required>
+
+                                <option value="">-- Select User --</option>
+
+                                @if (users != null)
+                                {
+                                    foreach (var user in users)
+                                    {
+                                        <option value="@user.UserId">
+                                            User @user.UserId
+                                        </option>
+                                    }
+                                }
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Visa Card Number
+                            </label>
+
+                            <input type="text"
+                                   name="cardNumber"
+                                   class="form-control"
+                                   placeholder="16 digit test card"
+                                   maxlength="16"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Card Holder Name
+                            </label>
+
+                            <input type="text"
+                                   name="cardHolder"
+                                   class="form-control"
+                                   required />
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    Expiry Date
+                                </label>
+
+                                <input type="text"
+                                       name="expiryDate"
+                                       class="form-control"
+                                       placeholder="MM/YY"
+                                       required />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    CVV
+                                </label>
+
+                                <input type="text"
+                                       name="cvv"
+                                       class="form-control"
+                                       placeholder="123"
+                                       maxlength="3"
+                                       required />
+                            </div>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+                            Pay Now
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> *@

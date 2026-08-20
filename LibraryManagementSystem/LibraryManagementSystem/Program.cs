@@ -1,4 +1,9 @@
 
+
+// Add services to the container.
+
+
+
 using LibraryManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,5 +51,11 @@ app.UseAuthorization();
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
+
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
+
     pattern: "{controller=Users}/{action=Login}/{id?}");
 app.Run();
+
